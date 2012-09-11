@@ -24,5 +24,6 @@
     <string name="events">Events</string>
     <string name="event_title">Event Title</string>
     <string name="about">About</string>
+    <string name="scala1">Scala1</string>
 
 </resources>

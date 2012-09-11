@@ -9,13 +9,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/title_tile" >
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:src="@drawable/splash_scala1_logo" />
+        
+        <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:text="@string/scala1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@string/title_color" />
 
     </LinearLayout>
 
