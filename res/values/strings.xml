@@ -17,5 +17,12 @@
     <string name="title_activity_event_info">EventInfo</string>
     <string name="title_activity_favourites">Favourites</string>
     <string name="title_activity_playground">Playground</string>
+    <string name="playground">Playground</string>
+    <string name="title_color">#FFFFFF</string>
+    <string name="speakers">Speakers</string>
+    <string name="favourites">Favourites</string>
+    <string name="events">Events</string>
+    <string name="event_title">Event Title</string>
+    <string name="about">About</string>
 
 </resources>
