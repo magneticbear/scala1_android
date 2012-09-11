@@ -11,5 +11,11 @@
     <string name="button_playground_text">Playground</string>
     <string name="button_about_text">About Scala1</string>
     <string name="title_activity_speakers">Speakers</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_events">Events</string>
+    <string name="title_activity_event_info">EventInfo</string>
+    <string name="title_activity_favourites">Favourites</string>
+    <string name="title_activity_playground">Playground</string>
 
 </resources>
