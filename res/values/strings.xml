@@ -10,5 +10,6 @@
     <string name="button_favourites_text">Favourites</string>
     <string name="button_playground_text">Playground</string>
     <string name="button_about_text">About Scala1</string>
+    <string name="title_activity_speakers">Speakers</string>
 
 </resources>
