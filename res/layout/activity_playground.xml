@@ -19,15 +19,16 @@
         android:gravity="center_vertical|center_horizontal|center"
         android:text="@string/playground"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@string/title_color" />
+		android:textColor="#FFFFFF"/>
+         
 
     </LinearLayout>
     
-
 <WebView 
         android:id="@+id/webview_playground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
+
     
 </LinearLayout>

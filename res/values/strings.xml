@@ -18,12 +18,13 @@
     <string name="title_activity_favourites">Favourites</string>
     <string name="title_activity_playground">Playground</string>
     <string name="playground">Playground</string>
-    <string name="title_color">#FFFFFF</string>
     <string name="speakers">Speakers</string>
     <string name="favourites">Favourites</string>
     <string name="events">Events</string>
     <string name="event_title">Event Title</string>
     <string name="about">About</string>
     <string name="scala1">Scala1</string>
+    <string name="url_playground">http://108.166.87.233:9000/playground</string>
+    <string name="url_about">http://108.166.87.233:9000/</string>
 
 </resources>
