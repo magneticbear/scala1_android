@@ -35,25 +35,32 @@ public class Events extends Activity {
 		try 
 		{
 			JSONObject o = new JSONObject(rawEventFeedJSON);
-			Toast.makeText(getBaseContext(), "Length of JSON: " + o.length(), Toast.LENGTH_LONG).show();
-			Toast.makeText(getBaseContext(), o.names().toString(), Toast.LENGTH_LONG).show();
+			//Toast.makeText(getBaseContext(), "Length of JSON: " + o.length(), Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getBaseContext(), o.names().toString(), Toast.LENGTH_SHORT).show();
 			
 			// Loop through each key in the JSON
 			for(int iter = 0; iter < o.names().length(); iter++)
 			{
 				String name = o.names().getString(iter);
 				
-				Toast.makeText(getBaseContext(), o.getString(name), Toast.LENGTH_LONG).show();
-			}
-			
-			//JSONArray jsonArray = new JSONArray(rawEventFeedJSON);
-			
-			//Log.i(Events.class.getName(), "Number of entries " + jsonArray.length());
-			
-			//for (int i = 0; i < jsonArray.length(); i++) 
-			{
-			//	JSONObject jsonObject = jsonArray.getJSONObject(i);
-				//Log.i(Events.class.getName(), jsonObject.getString("text"));
+				if(name.equals("message"))
+				{	
+					String message = o.getString(name);
+					//Toast.makeText(getBaseContext(), "Message: " + message, Toast.LENGTH_SHORT).show();
+				}
+				else if(name.equals("status"))
+				{
+					String status = o.getString(name);
+					//Toast.makeText(getBaseContext(), "Status: " + status, Toast.LENGTH_SHORT).show();
+				}
+				else if(name.equals("result"))
+				{
+					JSONObject result = o.getJSONObject(name);
+					Toast.makeText(getBaseContext(), "Digging in:  " + result.names().getString(0) , Toast.LENGTH_LONG).show();
+					
+				}
+				
+				
 			}
 		} 
 		catch (Exception e) 
