@@ -49,6 +49,17 @@ public class Events extends Activity {
 			// Get events array from result object
 			JSONArray events = result.getJSONArray("events");
 			
+			// Build an array of struct_event objects
+			Struct_Event[] events_objects = new Struct_Event[events.length()];
+			
+			// Create those objects
+			for(int iter = 0; iter < events.length(); iter++)
+			{
+				JSONObject   event   = events.getJSONObject(iter);	
+				Struct_Event builder = new Struct_Event(event.getString("title"), event.getString("start"), event.getString("location"), event.getString("id"));
+				events_objects[iter] = builder;
+			}
+			
 			Log.d("JSON", "Got " + events.length() + " events.");
 			
 		} 
