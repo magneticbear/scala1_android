@@ -52,11 +52,14 @@ public class Events extends Activity {
 			// Build an array of struct_event objects
 			Struct_Event[] events_objects = new Struct_Event[events.length()];
 			
-			// Create those objects
+			// Create those objects from JSON
 			for(int iter = 0; iter < events.length(); iter++)
 			{
+				// Get event object form json array at iter
 				JSONObject   event   = events.getJSONObject(iter);	
+				// Create a new struct event to hold this json event
 				Struct_Event builder = new Struct_Event(event.getString("title"), event.getString("start"), event.getString("location"), event.getString("id"));
+				// Add it to the array of struct_events
 				events_objects[iter] = builder;
 			}
 			
