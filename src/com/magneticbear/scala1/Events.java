@@ -34,37 +34,27 @@ public class Events extends Activity {
         // Parse event feed
 		try 
 		{
-			JSONObject o = new JSONObject(rawEventFeedJSON);
-			//Toast.makeText(getBaseContext(), "Length of JSON: " + o.length(), Toast.LENGTH_SHORT).show();
-			//Toast.makeText(getBaseContext(), o.names().toString(), Toast.LENGTH_SHORT).show();
+			// Create object from base
+			JSONObject base = new JSONObject(rawEventFeedJSON);
 			
-			// Loop through each key in the JSON
-			for(int iter = 0; iter < o.names().length(); iter++)
-			{
-				String name = o.names().getString(iter);
-				
-				if(name.equals("message"))
-				{	
-					String message = o.getString(name);
-					//Toast.makeText(getBaseContext(), "Message: " + message, Toast.LENGTH_SHORT).show();
-				}
-				else if(name.equals("status"))
-				{
-					String status = o.getString(name);
-					//Toast.makeText(getBaseContext(), "Status: " + status, Toast.LENGTH_SHORT).show();
-				}
-				else if(name.equals("result"))
-				{
-					JSONObject result = o.getJSONObject(name);
-					Toast.makeText(getBaseContext(), "Digging in:  " + result.names().getString(0) , Toast.LENGTH_LONG).show();
-					
-				}
-				
-				
-			}
+			// Check status
+			if(!base.getString("status").equals("OK")) throw new Exception("Status from JSON was not 'OK'");
+			
+			// Check message
+			if(!base.getString("message").equals("Success")) throw new Exception("Message from JSON was not 'Success'");
+			
+			// Get result object
+			JSONObject result = base.getJSONObject("result");
+			
+			// Get events array from result object
+			JSONArray events = result.getJSONArray("events");
+			
+			Log.d("JSON", "Got " + events.length() + " events.");
+			
 		} 
 		catch (Exception e) 
 		{
+			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
     }
