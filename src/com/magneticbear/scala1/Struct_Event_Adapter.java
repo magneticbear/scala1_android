@@ -25,18 +25,21 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
         if (convertView == null) 
         {
             LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflator.inflate(R.layout.row, null);
+            convertView = inflator.inflate(R.layout.struct_event_adapater_row, null);
         }
         
         Struct_Event event = items.get(position);
         if (event != null) 
         {
-			TextView tt = (TextView) v.findViewById(R.id.toptext);
-			TextView bt = (TextView) v.findViewById(R.id.bottomtext);
-			if (tt != null) {
-			      tt.setText("Name: " + event.getOrderName());                            }
-			if(bt != null){
-			      bt.setText("Status: " + event.getOrderStatus());
+			TextView title    = (TextView) convertView.findViewById(R.id.struct_event_adapter_row_title);
+			TextView subtitle = (TextView) convertView.findViewById(R.id.struct_event_adapter_row_subtitle);
+			if (title != null) 
+			{
+			      title.setText("Name: " + event.title);                            
+			}
+			if(subtitle != null)
+			{
+			      subtitle.setText("Status: " + event.location);
 			}
         }
         

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class Events extends Activity {
@@ -50,7 +52,7 @@ public class Events extends Activity {
 			JSONArray events = result.getJSONArray("events");
 			
 			// Build an array of struct_event objects
-			Struct_Event[] events_objects = new Struct_Event[events.length()];
+			ArrayList<Struct_Event> events_objects = new ArrayList<Struct_Event>();
 			
 			// Create those objects from JSON
 			for(int iter = 0; iter < events.length(); iter++)
@@ -60,8 +62,15 @@ public class Events extends Activity {
 				// Create a new struct event to hold this json event
 				Struct_Event builder = new Struct_Event(event.getString("title"), event.getString("start"), event.getString("location"), event.getString("id"));
 				// Add it to the array of struct_events
-				events_objects[iter] = builder;
+				events_objects.add(builder);
 			}
+			
+			// Create an adapter
+			Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, events_objects);
+			
+			// Connect list to adapter
+			ListView lv = (ListView)findViewById(R.id.events_list);
+			lv.setAdapter(adapter);
 			
 			Log.d("JSON", "Got " + events.length() + " events.");
 			
