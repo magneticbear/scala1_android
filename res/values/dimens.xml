@@ -3,4 +3,6 @@
     <dimen name="scala_button_text_padding">4dp</dimen>
     <dimen name="scala_button_img_padding">10dp</dimen>
     <dimen name="home_typesafe_logo_padding">10dp</dimen>
+    <dimen name="star_adapter_row_padding">5dp</dimen>
+    <dimen name="arrow_adapter_row_padding">5dp</dimen>
 </resources>

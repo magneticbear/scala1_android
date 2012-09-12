@@ -35,11 +35,11 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 			TextView subtitle = (TextView) convertView.findViewById(R.id.struct_event_adapter_row_subtitle);
 			if (title != null) 
 			{
-			      title.setText("Name: " + event.title);                            
+			      title.setText(event.title);                            
 			}
 			if(subtitle != null)
 			{
-			      subtitle.setText("Status: " + event.location);
+			      subtitle.setText(event.location);
 			}
         }
         
