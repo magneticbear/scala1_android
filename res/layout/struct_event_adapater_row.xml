@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:minHeight="82dp"
     android:orientation="horizontal" >
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|center_vertical"
+        android:layout_gravity="left|center_vertical|fill"
         android:padding="@dimen/star_adapter_row_padding"
         android:src="@drawable/events_star_off" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/struct_event_adapter_row_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imageView1"
+        android:maxLines="@integer/one"
+        android:paddingTop="@dimen/large_font_padding"
+        android:textSize="15dp"
+        android:textColor="#0da4d0"
+        android:text="Title Here Scala Scala Yo"
+        android:textStyle="bold"
+         />
 
-        <TextView
-            android:id="@+id/struct_event_adapter_row_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Large Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
-            android:id="@+id/struct_event_adapter_row_subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView2"
+    <TextView
+        android:id="@+id/struct_event_adapter_row_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|center_vertical"
-        android:padding="@dimen/arrow_adapter_row_padding"
-        android:src="@drawable/events_arrow" />
+        android:layout_below="@+id/struct_event_adapter_row_title"
+        android:layout_toRightOf="@+id/imageView1"
+        android:maxLines="@integer/one"
+        android:paddingBottom="@dimen/large_font_padding"
+        android:paddingTop="@dimen/teeny_font_padding"
+        android:text="Subtitle Here HELP IM TRAPPED IN A UNIVERSE FACTORY"
+        android:textColor="#999999"
+        android:textSize="@dimen/teeny_font_size"
+        android:textStyle="italic" />
 
-</LinearLayout>
+</RelativeLayout>

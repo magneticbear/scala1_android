@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE"
     android:orientation="vertical" >
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/title_tile" >
+    android:background="@drawable/title_tile"
+    android:minHeight="54dp" >
 
     <TextView
         android:id="@+id/textView1"
@@ -18,15 +18,19 @@
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical|center_horizontal|center"
         android:text="@string/events"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#FFFFFF" />
+        android:textStyle="bold"
+        android:textColor="#f2fafc" 
+        android:textSize="24dp"
+        android:shadowColor="#076f96"
+        android:shadowDy="-1"
+        />
 
     </LinearLayout>
 
 <ListView
     android:id="@+id/events_list"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
-</ListView>
+    android:layout_height="wrap_content" 
+    android:background="#FFFFFF"/>
     
 </LinearLayout>
