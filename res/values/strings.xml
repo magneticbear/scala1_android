@@ -26,5 +26,6 @@
     <string name="scala1">Scala1</string>
     <string name="url_playground">http://108.166.87.233:9000/playground</string>
     <string name="url_about">http://108.166.87.233:9000/</string>
+    <string name="url_events_feed">http://108.166.87.233:9000/events</string>
 
 </resources>
