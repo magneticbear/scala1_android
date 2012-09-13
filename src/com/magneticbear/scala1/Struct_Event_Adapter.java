@@ -1,7 +1,9 @@
 package com.magneticbear.scala1;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.content.Context;
@@ -25,7 +27,7 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	    this.items = items;
 	    
 	    // Create separators
-	    //createSeparators();
+	    createSeparators();
     }
     
     private void createSeparators()
@@ -39,11 +41,11 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
     	// Add day 1 right at the top
     	items.add(0, new Struct_Event("Day " + current_day));
     	
-    	// Compare rest to first day
-    	for(int iter = 1; iter < items.size(); iter++)
+    	// Compare rest to first day (skip day 1 sep and event 1)
+    	for(int iter = 2; iter < items.size(); iter++)
     	{
     		// Calculate how many days between this event and the last
-    		int day_distance = (int)( (items.get(iter).start_date.getTime() - items.get(iter - 1).start_date.getTime()) / (1000 * 60 * 60 * 24));
+    		int day_distance = (int)countDaysBetween(items.get(iter-1).start_date, items.get(iter).start_date);
     		
     		// If there is more than one day
     		if(day_distance > 0)
@@ -69,6 +71,34 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
     }
     
     
+    private final int MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
+    private long countDaysBetween(Date start, Date end) 
+    {
+        if (end.before(start)) 
+        {
+            throw new IllegalArgumentException("The end date must be later than the start date");
+        }
+
+        // Reset all hours mins and secs to zero on start date
+        Calendar startCal = GregorianCalendar.getInstance();
+        startCal.setTime(start);
+        startCal.set(Calendar.HOUR_OF_DAY, 0);
+        startCal.set(Calendar.MINUTE, 0);
+        startCal.set(Calendar.SECOND, 0);
+        long startTime = startCal.getTimeInMillis();
+
+        // Reset all hours mins and secs to zero on end date
+        Calendar endCal = GregorianCalendar.getInstance();
+        endCal.setTime(end);
+        endCal.set(Calendar.HOUR_OF_DAY, 0);
+        endCal.set(Calendar.MINUTE, 0);
+        endCal.set(Calendar.SECOND, 0);
+        long endTime = endCal.getTimeInMillis();
+
+        return (endTime - startTime) / MILLISECONDS_IN_DAY;
+    }
+    
+    
     @Override
     public View getView(int position, View convertView, ViewGroup parent) 
     {
@@ -91,6 +121,10 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	                // Inflate an event row separator
 	                convertView = inflator.inflate(R.layout.struct_event_adapater_row_separator, null);
 	            }
+	            
+	            // Set the title
+	            TextView title = (TextView)convertView.findViewById(R.id.struct_event_adapter_row_separator_day_label);
+	            title.setText(event.title);
         	}        	
         	else
 	        {
