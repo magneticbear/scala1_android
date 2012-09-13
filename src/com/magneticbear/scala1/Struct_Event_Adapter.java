@@ -11,13 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event> 
 {
-	private static final Boolean FLAG_EVENT_ITEM     = true;
-	private static final Boolean FLAG_SEPERATOR_ITEM = false;
 	
-	private ArrayList<Boolean>		flags;
 	private ArrayList<Struct_Event> items;
 
     public Struct_Event_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Event> items) 
@@ -26,9 +24,6 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	    
 	    // Associate arraylist of struct_event items
 	    this.items = items;
-	    
-	    // Sort And Create Separators
-	    sortAndCreateSeparators();
     }
     
     private void sortAndCreateSeparators()

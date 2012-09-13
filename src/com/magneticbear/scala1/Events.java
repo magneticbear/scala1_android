@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -64,6 +65,31 @@ public class Events extends Activity {
 				// Add it to the array of struct_events
 				events_objects.add(builder);
 			}
+			
+			// Events_objects now holds all events
+
+			// Sort items from earliest to latest start date
+	    	int iter = 0;
+	    	while(iter < events_objects.size() - 1)
+	    	{
+	    		// Get A, B dates
+	    		Date a = events_objects.get(iter).start_date;
+	    		Date b = events_objects.get(iter + 1).start_date;
+	    		
+	    		// If A is after than B, swap, restart, else continue
+	    		if(a.after(b))
+	    		{
+	    			// A is after B, swap
+	    			Struct_Event register = events_objects.get(iter);		 // Move A into register
+	    			events_objects.set(iter, events_objects.get(iter + 1));	 // Move B into A's position
+	    			events_objects.set(iter + 1, register);				     // Move A from register into B's position
+	    			
+	    			// Restart
+	    			iter = 0;
+	    			continue;
+	    		}	
+	    		iter++;
+	    	}
 			
 			// Create an adapter
 			Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, events_objects);
