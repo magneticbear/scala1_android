@@ -25,11 +25,14 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	    this.items = items;
 	    
 	    // Create separators
-	    createSeparators();
+	    //createSeparators();
     }
     
     private void createSeparators()
     {
+    	// No items? no seps
+    	if(items.size() == 0) return;
+    	
     	// Separate by day
     	int current_day = 1;
     	
@@ -39,9 +42,29 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
     	// Compare rest to first day
     	for(int iter = 1; iter < items.size(); iter++)
     	{
-    		// Calculate how many days after the first day this day is
-    		int day_distance = (int)( (items.get(iter).start_date.getTime() - items.get(0).start_date.getTime()) / (1000 * 60 * 60 * 24));
-    				
+    		// Calculate how many days between this event and the last
+    		int day_distance = (int)( (items.get(iter).start_date.getTime() - items.get(iter - 1).start_date.getTime()) / (1000 * 60 * 60 * 24));
+    		
+    		// If there is more than one day
+    		if(day_distance > 0)
+    		{
+    			// There is a day gap we need a new sep
+    			current_day += day_distance;
+    			
+    			// Add day sep right above current event (that fell on a new day)
+    	    	items.add(iter, new Struct_Event("Day " + current_day));
+    	    	
+    	    	// This will cause us to iterate the same event again if we dont manual step past it
+    	    	iter++;
+    	    	
+    	    	// Move to next event different
+    	    	continue;
+    		}
+    		else
+    		{
+    			// There is no day gap, no sep here
+    			continue;
+    		}
     	}
     }
     
