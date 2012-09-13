@@ -8,6 +8,8 @@ import android.text.format.Time;
 
 public class Struct_Event 
 {
+	public Boolean isSeparator;
+	
 	public String title;
 	public Date   start_date;
 	public String location;
@@ -15,10 +17,16 @@ public class Struct_Event
 	
 	public Struct_Event(String Title, String Start, String Location, String EventID)
 	{
-		title      = Title;
-		location   = Location;
-		eventid    = EventID;
-		start_date = readDate(Start);
+		isSeparator = false;
+		title       = Title;
+		location    = Location;
+		eventid     = EventID;
+		start_date  = readDate(Start);
+	}
+	public Struct_Event(String Title)
+	{
+		isSeparator = true;
+		title       = Title;
 	}
 	
 	private Date readDate(String DateString)
