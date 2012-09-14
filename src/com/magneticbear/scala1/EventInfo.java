@@ -14,7 +14,7 @@ public class EventInfo extends Activity {
         setContentView(R.layout.activity_event_info);
         
         // Setup debug data
-        String event_title_to_display = "PASS TITLE HERE";
+        String event_title_to_display = "Event Info";
         int event_id_to_load = 1;
         
         // Navigate to event url
