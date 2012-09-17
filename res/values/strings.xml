@@ -28,5 +28,7 @@
     <string name="url_about">https://scala1.tindr.co/</string>
     <string name="url_events_feed">https://scala1.tindr.co/events</string>
     <string name="url_event_info_base">https://scala1.tindr.co/events/</string>
+    <string name="url_speakers_feed">https://scala1.tindr.co/speakers</string>
+    <string name="url_speakers_info_base">https://scala1.tindr.co/speakers/</string>
 
 </resources>
