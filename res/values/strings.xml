@@ -24,9 +24,9 @@
     <string name="event_title">Event Title</string>
     <string name="about">About</string>
     <string name="scala1">Scala1</string>
-    <string name="url_playground">http://108.166.87.233:9000/playground</string>
-    <string name="url_about">http://108.166.87.233:9000/</string>
-    <string name="url_events_feed">http://108.166.87.233:9000/events</string>
-    <string name="url_event_info_base">http://108.166.87.233:9000/events/</string>
+    <string name="url_playground">https://scala1.tindr.co/playground</string>
+    <string name="url_about">https://scala1.tindr.co/</string>
+    <string name="url_events_feed">https://scala1.tindr.co/events</string>
+    <string name="url_event_info_base">https://scala1.tindr.co/events/</string>
 
 </resources>

@@ -118,7 +118,7 @@ public class Events extends Activity {
     public String readEventFeed() 
     {
         StringBuilder builder = new StringBuilder();
-        HttpClient    client  = new DefaultHttpClient();
+        HttpClient    client  = OpenAllSSLSocketFactory.getNewOpenAllSSLHttpClient(); //new DefaultHttpClient();
         HttpGet       httpGet = new HttpGet(getString(R.string.url_events_feed));
         
         try 
