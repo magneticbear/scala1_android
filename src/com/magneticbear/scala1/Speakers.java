@@ -98,11 +98,11 @@ public class Speakers extends Activity {
 	    	}
 			
 			// Create an adapter
-			//Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, speakers_objects);
+			Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, speakers_objects);
 			
 			// Connect list to adapter
-			//ListView lv = (ListView)findViewById(R.id.speakers_list);
-			//lv.setAdapter(adapter);
+			ListView lv = (ListView)findViewById(R.id.speakers_list);
+			lv.setAdapter(adapter);
 			
 			Log.d("JSON", "Got " + speakers.length() + " speakers.");
 			

@@ -124,7 +124,7 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	            
 	            // Set the title
 	            TextView title = (TextView)convertView.findViewById(R.id.struct_event_adapter_row_separator_day_label);
-	            title.setText(event.seperator_title);
+	            title.setText(event.event_or_seperator_title);
         	}        	
         	else
 	        {
@@ -145,7 +145,7 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 				TextView subtitle = (TextView) convertView.findViewById(R.id.struct_event_adapter_row_subtitle);
 				if (title != null) 
 				{
-				      title.setText(event.seperator_title);                            
+				      title.setText(event.event_or_seperator_title);                            
 				}
 				if(subtitle != null)
 				{
