@@ -31,6 +31,29 @@ public class EventInfo extends Activity {
         	 {
         		 handler.proceed();
         	 }
+        	 
+        	 @Override
+        	 public boolean shouldOverrideUrlLoading(WebView view, String url) 
+        	 {
+				String[] urlbits = url.split("/");
+				String   type 	 = urlbits[urlbits.length - 2];
+				String   index 	 = urlbits[urlbits.length - 1];
+        		 
+        		if(type.equals("speakers"))
+        		{
+        			// Go to speaker of index
+        			Intent intent = new Intent(view.getContext(), SpeakersInfo.class);
+                    startActivityForResult(intent, 0);
+        		}
+        		else if(type.equals("events"))
+        		{
+        			// Go to event of index
+        			Intent intent = new Intent(view.getContext(), EventInfo.class);
+                    startActivityForResult(intent, 0);
+        		}
+				
+				return false;
+        	 }
         });
         
         event_info_webview.getSettings().setJavaScriptEnabled(true);
