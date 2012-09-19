@@ -8,4 +8,7 @@
     <dimen name="teeny_font_size">12dp</dimen>
     <dimen name="teeny_font_padding">6dp</dimen>
     <dimen name="large_font_padding">8dp</dimen>
+    <dimen name="speakers_name_padding">10dp</dimen>
+    <dimen name="speakers_star_padding">2dp</dimen>
+    <dimen name="speakers_icon_padding">6dp</dimen>
 </resources>
