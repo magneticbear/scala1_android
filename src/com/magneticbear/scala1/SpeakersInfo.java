@@ -2,6 +2,7 @@ package com.magneticbear.scala1;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -13,7 +14,8 @@ import android.net.http.SslError;
 public class SpeakersInfo extends Activity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) 
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speakers_info);
         
@@ -32,6 +34,30 @@ public class SpeakersInfo extends Activity {
         	 {
         		 handler.proceed();
         	 }
+        	 
+        	 @Override
+        	 public boolean shouldOverrideUrlLoading(WebView view, String url) 
+        	 {
+				String[] urlbits = url.split("/");
+				String   type 	 = urlbits[urlbits.length - 2];
+				String   index 	 = urlbits[urlbits.length - 1];
+        		 
+        		if(type.equals("speakers"))
+        		{
+        			// Go to speaker of index
+        			Intent intent = new Intent(view.getContext(), SpeakersInfo.class);
+                    startActivityForResult(intent, 0);
+        		}
+        		else if(type.equals("events"))
+        		{
+        			// Go to event of index
+        			Intent intent = new Intent(view.getContext(), EventInfo.class);
+                    startActivityForResult(intent, 0);
+        		}
+				
+				return false;
+        	 }
+        	
         });
         
         speakers_info_webview.getSettings().setJavaScriptEnabled(true);
