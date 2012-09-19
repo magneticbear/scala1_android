@@ -30,6 +30,9 @@ public class SpeakersInfo extends Activity {
         String speaker_title_to_display = "Speaker Info";
         int speaker_id_to_load = 1;
         
+        // Setup real data
+        if(getIntent().getExtras() != null) if(getIntent().getExtras().containsKey("index")) speaker_id_to_load = getIntent().getExtras().getInt("index");
+        
         // Navigate to speaker url
         WebView speakers_info_webview = (WebView)findViewById(R.id.webview_speaker_info);
         
@@ -53,12 +56,14 @@ public class SpeakersInfo extends Activity {
         		{
         			// Go to speaker of index
         			Intent intent = new Intent(view.getContext(), SpeakersInfo.class);
+        			intent.putExtra("index", Integer.parseInt(index));
                     startActivityForResult(intent, 0);
         		}
         		else if(type.equals("events"))
         		{
         			// Go to event of index
         			Intent intent = new Intent(view.getContext(), EventInfo.class);
+        			intent.putExtra("index", Integer.parseInt(index));
                     startActivityForResult(intent, 0);
         		}
 				
