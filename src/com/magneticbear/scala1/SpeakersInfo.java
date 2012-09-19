@@ -13,9 +13,16 @@ import android.net.http.SslError;
 
 public class SpeakersInfo extends Activity {
 
+	Bundle save_speaker;
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
+        // Create a bundle to save the web state
+    	if(save_speaker == null)
+    	{
+    		save_speaker = new Bundle();
+    	}
+    	
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speakers_info);
         
@@ -66,6 +73,11 @@ public class SpeakersInfo extends Activity {
         // Set title to speaker name title
         TextView title = (TextView)findViewById(R.id.speaker_info_title);
         title.setText(speaker_title_to_display);
+        
+        if(savedInstanceState != null)
+        {
+        	speakers_info_webview.restoreState(savedInstanceState);
+        }
     }
 
     @Override
@@ -75,9 +87,28 @@ public class SpeakersInfo extends Activity {
     }
     
     @Override
-    public void onBackPressed() {
-    	// Go to speakers
-		Intent intent = new Intent(getBaseContext(), Speakers.class);
-        startActivityForResult(intent, 0);
+    protected void onPause() 
+    {
+    	((WebView)findViewById(R.id.webview_speaker_info)).saveState(save_speaker);
+    	super.onPause();
+    }
+    
+    @Override
+    protected void onResume() 
+    {
+    	((WebView)findViewById(R.id.webview_speaker_info)).restoreState(save_speaker);
+    	super.onResume();
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState) 
+    {
+    	((WebView)findViewById(R.id.webview_speaker_info)).saveState(outState);
+    }
+    
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) 
+    {
+    	((WebView)findViewById(R.id.webview_speaker_info)).restoreState(savedInstanceState);
     }
 }

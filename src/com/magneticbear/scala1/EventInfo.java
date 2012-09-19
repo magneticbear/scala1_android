@@ -10,10 +10,19 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
-public class EventInfo extends Activity {
-
+public class EventInfo extends Activity 
+{	
+	Bundle save_event;
+	
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) 
+    {
+    	// Create a bundle to save the web state
+    	if(save_event == null)
+    	{
+    		save_event = new Bundle();
+    	}
+    		
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_info);
         
@@ -28,6 +37,7 @@ public class EventInfo extends Activity {
         // to accept the cert. This is an android bug, and this is the accepted workaround
         event_info_webview.setWebViewClient(new WebViewClient() 
         {
+        	// Ignore SSL certs
         	 public void onReceivedSslError (WebView view, SslErrorHandler handler, SslError error) 
         	 {
         		 handler.proceed();
@@ -63,6 +73,11 @@ public class EventInfo extends Activity {
         // Set title to event title
         TextView title = (TextView)findViewById(R.id.event_info_title);
         title.setText(event_title_to_display);
+        
+        if(savedInstanceState != null)
+        {
+        	event_info_webview.restoreState(savedInstanceState);
+        }
     }
 
     @Override
@@ -70,11 +85,30 @@ public class EventInfo extends Activity {
         getMenuInflater().inflate(R.menu.activity_event_info, menu);
         return true;
     }
+
+    @Override
+    protected void onPause() 
+    {
+    	((WebView)findViewById(R.id.webview_event_info)).saveState(save_event);
+    	super.onPause();
+    }
     
     @Override
-    public void onBackPressed() {
-    	// Go to events
-		Intent intent = new Intent(getBaseContext(), Events.class);
-        startActivityForResult(intent, 0);
+    protected void onResume() 
+    {
+    	((WebView)findViewById(R.id.webview_event_info)).restoreState(save_event);
+    	super.onResume();
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState) 
+    {
+    	((WebView)findViewById(R.id.webview_event_info)).saveState(outState);
+    }
+    
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) 
+    {
+    	((WebView)findViewById(R.id.webview_event_info)).restoreState(savedInstanceState);
     }
 }
