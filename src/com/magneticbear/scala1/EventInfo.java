@@ -34,7 +34,7 @@ public class EventInfo extends Activity {
         });
         
         event_info_webview.getSettings().setJavaScriptEnabled(true);
-        event_info_webview.loadUrl(getString(R.string.url_event_info_base) + event_id_to_load);
+        event_info_webview.loadUrl(getString(R.string.url_event_info_base) + event_id_to_load + "?hideActions=1");
         
         // Set title to event title
         TextView title = (TextView)findViewById(R.id.event_info_title);
