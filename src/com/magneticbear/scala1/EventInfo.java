@@ -46,4 +46,11 @@ public class EventInfo extends Activity {
         getMenuInflater().inflate(R.menu.activity_event_info, menu);
         return true;
     }
+    
+    @Override
+    public void onBackPressed() {
+    	// Go to events
+		Intent intent = new Intent(getBaseContext(), Events.class);
+        startActivityForResult(intent, 0);
+    }
 }
