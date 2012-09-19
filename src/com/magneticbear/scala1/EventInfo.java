@@ -3,6 +3,7 @@ package com.magneticbear.scala1;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
@@ -18,7 +19,7 @@ public class EventInfo extends Activity {
         
         // Setup debug data
         String event_title_to_display = "Event Info";
-        int event_id_to_load = 1;
+        int event_id_to_load = 2;
         
         // Navigate to event url
         WebView event_info_webview = (WebView)findViewById(R.id.webview_event_info);
