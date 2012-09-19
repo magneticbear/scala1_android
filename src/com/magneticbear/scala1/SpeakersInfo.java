@@ -47,4 +47,11 @@ public class SpeakersInfo extends Activity {
         getMenuInflater().inflate(R.menu.activity_speakers_info, menu);
         return true;
     }
+    
+    @Override
+    public void onBackPressed() {
+    	// Go to speakers
+		Intent intent = new Intent(getBaseContext(), Speakers.class);
+        startActivityForResult(intent, 0);
+    }
 }
