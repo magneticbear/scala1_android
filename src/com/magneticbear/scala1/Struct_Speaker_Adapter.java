@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -121,6 +122,58 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 	        			Intent intent = new Intent(Parent.getContext(), SpeakersInfo.class);
 	        			intent.putExtra("index", speaker.speakerid);
 	                    Parent.getContext().startActivity(intent);
+					}
+				});
+				
+				// Catch the fav star click
+				final ImageView star = (ImageView)convertView.findViewById(R.id.fav_star_speaker_row);
+				star.setOnClickListener(new OnClickListener() 
+				{
+					@Override
+					public void onClick(View v) 
+					{
+						UserData.load_or_create();
+						if(UserData.is_fav(speaker))
+						{
+							UserData.remove_fav(speaker);
+							star.setImageResource(R.drawable.speakers_avator_star_off);
+						}
+						else
+						{
+							UserData.add_fav(speaker);
+							star.setImageResource(R.drawable.speakers_avator_star_on);
+						}
+					}
+				});
+				
+				// Check if already is a fav
+				UserData.load_or_create();
+				if(UserData.is_fav(speaker))
+				{
+					star.setImageResource(R.drawable.speakers_avator_star_on);
+				}
+				else
+				{
+					star.setImageResource(R.drawable.speakers_avator_star_off);
+				}
+				
+				// Catch the user icon click
+				convertView.findViewById(R.id.speaker_icon).setOnClickListener(new OnClickListener() 
+				{
+					@Override
+					public void onClick(View v) 
+					{
+						UserData.load_or_create();
+						if(UserData.is_fav(speaker))
+						{
+							UserData.remove_fav(speaker);
+							star.setImageResource(R.drawable.speakers_avator_star_off);
+						}
+						else
+						{
+							UserData.add_fav(speaker);
+							star.setImageResource(R.drawable.speakers_avator_star_on);
+						}
 					}
 				});
         	}

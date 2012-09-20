@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -165,6 +166,39 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	                    Parent.getContext().startActivity(intent);
 					}
 				});
+				
+				// Catch the fav star click
+				final ImageView star = (ImageView)convertView.findViewById(R.id.fav_star_event_row);
+				star.setOnClickListener(new OnClickListener() 
+				{
+					@Override
+					public void onClick(View v) 
+					{
+						UserData.load_or_create();
+						if(UserData.is_fav(event))
+						{
+							UserData.remove_fav(event);
+							star.setImageResource(R.drawable.events_star_off);
+						}
+						else
+						{
+							UserData.add_fav(event);
+							star.setImageResource(R.drawable.events_star_on);
+						}
+					}
+				});
+				
+				
+				// Check if already is a fav
+				UserData.load_or_create();
+				if(UserData.is_fav(event))
+				{
+					star.setImageResource(R.drawable.events_star_on);
+				}
+				else
+				{
+					star.setImageResource(R.drawable.events_star_off);
+				}
         	}
         }
         

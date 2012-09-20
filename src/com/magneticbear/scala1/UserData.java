@@ -35,25 +35,25 @@ public class UserData
 	}
 	public static Boolean is_fav(Struct_Event event)
 	{
-		if(fav_events.contains(event))
+		for(int iter = 0; iter < fav_events.size(); iter++)
 		{
-			return true;
+			if(fav_events.get(iter).eventid.equals(event.eventid))
+			{
+				return true;
+			}
 		}
-		else
-		{
-			return false;
-		}
+		return false;
 	}
 	public static Boolean is_fav(Struct_Speaker speaker)
 	{
-		if(fav_speakers.contains(speaker))
+		for(int iter = 0; iter < fav_speakers.size(); iter++)
 		{
-			return true;
+			if(fav_speakers.get(iter).speakerid == speaker.speakerid)
+			{
+				return true;
+			}
 		}
-		else
-		{
-			return false;
-		}
+		return false;
 	}
 	
 }
