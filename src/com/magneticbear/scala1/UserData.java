@@ -17,5 +17,22 @@ public class UserData
 			fav_speakers = new ArrayList<Struct_Speaker>();
 		}
 	}
+	
+	public static void add_fav(Struct_Event event)
+	{
+		fav_events.add(event);
+	}
+	public static void add_fav(Struct_Speaker speaker)
+	{
+		fav_speakers.add(speaker);
+	}
+	public static void remove_fav(Struct_Event event)
+	{
+		fav_events.remove(event);
+	}
+	public static void remove_fav(Struct_Speaker speaker)
+	{
+		fav_speakers.remove(speaker);
+	}
 
 }
