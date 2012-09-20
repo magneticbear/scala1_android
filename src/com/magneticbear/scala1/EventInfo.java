@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -90,10 +92,41 @@ public class EventInfo extends Activity
         	event_info_webview.restoreState(savedInstanceState);
         }
         
-        // Check if this is a fav already
+        // Load fav star
+        fav_proc(event_id_to_load);
+        
+        // Setup fav button
+        final int closure_saved_id = event_id_to_load;
+        findViewById(R.id.event_info_bar_star).setOnClickListener(new OnClickListener() 
+        {
+			@Override
+			public void onClick(View v) 
+			{
+				UserData.load_or_create();
+				Struct_Event box = new Struct_Event("BOX");
+			    box.eventid = closure_saved_id + "";
+		        if(UserData.is_fav(box))
+		        {
+		        	// already a fav make not fav
+		        	UserData.remove_fav(box);
+		        	fav_proc(closure_saved_id);
+		        }
+		        else
+		        {
+		        	// not a fav make a fav
+		        	UserData.add_fav(box);
+		        	fav_proc(closure_saved_id);
+		        }
+			}
+		});
+    }
+    
+    public void fav_proc(int id)
+    {
+    	// Check if this is a fav already
         UserData.load_or_create();
         Struct_Event box = new Struct_Event("BOX");
-        box.eventid = event_id_to_load + "";
+        box.eventid = id + "";
         if(UserData.is_fav(box))
         {
         	((ImageView)findViewById(R.id.event_info_bar_star)).setImageResource(R.drawable.eventinfo_topbar_star_on);

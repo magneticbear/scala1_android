@@ -27,11 +27,24 @@ public class UserData
 	}
 	public static void remove_fav(Struct_Event event)
 	{
-		fav_events.remove(event);
+		for(int iter = 0; iter < fav_events.size(); iter++)
+		{
+			if(fav_events.get(iter).eventid.equals(event.eventid))
+			{
+				fav_events.remove(iter);
+				return;
+			}
+		}
 	}
 	public static void remove_fav(Struct_Speaker speaker)
 	{
-		fav_speakers.remove(speaker);
+		for(int iter = 0; iter < fav_speakers.size(); iter++)
+		{
+			if(fav_speakers.get(iter).speakerid == speaker.speakerid)
+			{
+				fav_speakers.remove(iter);
+			}
+		}
 	}
 	public static Boolean is_fav(Struct_Event event)
 	{
