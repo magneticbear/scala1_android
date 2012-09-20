@@ -21,7 +21,7 @@
         android:src="@drawable/events_arrow" />
 
     <ImageView
-        android:id="@+id/speaker_over_star"
+        android:id="@+id/fav_star_speaker_row"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/speaker_icon"
