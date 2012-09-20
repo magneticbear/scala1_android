@@ -13,7 +13,7 @@ import android.net.http.SslError;
 
 public class SpeakersInfo extends Activity {
 
-	Bundle save_speaker;
+	static Bundle save_speaker;
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
@@ -31,7 +31,10 @@ public class SpeakersInfo extends Activity {
         int speaker_id_to_load = 1;
         
         // Setup real data
-        if(getIntent().getExtras() != null) if(getIntent().getExtras().containsKey("index")) speaker_id_to_load = getIntent().getExtras().getInt("index");
+        if(getIntent().getExtras() != null) 
+    	{
+        	if(getIntent().getExtras().containsKey("index")) speaker_id_to_load = getIntent().getExtras().getInt("index");
+    	}
         
         // Navigate to speaker url
         WebView speakers_info_webview = (WebView)findViewById(R.id.webview_speaker_info);
@@ -102,6 +105,7 @@ public class SpeakersInfo extends Activity {
     protected void onResume() 
     {
     	((WebView)findViewById(R.id.webview_speaker_info)).restoreState(save_speaker);
+    	onCreate(save_speaker);
     	super.onResume();
     }
     

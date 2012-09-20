@@ -103,7 +103,7 @@ public class Events extends Activity {
 		} 
 		catch (Exception e) 
 		{
-			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+			//Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
     }
@@ -128,7 +128,7 @@ public class Events extends Activity {
 			int 		 statusCode = statusLine.getStatusCode();
 			if (statusCode == 200) 
 			{
-				Toast.makeText(getBaseContext(), "HTTP 200 on events feed GET.", Toast.LENGTH_LONG).show();
+				//Toast.makeText(getBaseContext(), "HTTP 200 on events feed GET.", Toast.LENGTH_LONG).show();
 				
 				HttpEntity     entity  = response.getEntity();
 				InputStream    content = entity.getContent();

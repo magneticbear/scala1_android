@@ -7,9 +7,11 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -102,9 +104,7 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
     @Override
     public View getView(int position, View convertView, ViewGroup parent) 
     {
-
-        
-        Struct_Event event = items.get(position);
+        final Struct_Event event = items.get(position);
         if (event != null) 
         {
         	// Is this a separator or an actual event
@@ -151,6 +151,19 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 				{
 				      subtitle.setText(event.location);
 				}
+				
+				// Set the click link
+				title.setOnClickListener(new OnClickListener() 
+				{
+					@Override
+					public void onClick(View v) 
+					{
+						// Go to event of index
+	        			Intent intent = new Intent(getContext(), EventInfo.class);
+	        			intent.putExtra("index", event.eventid);
+	                    getContext().startActivity(intent);
+					}
+				});
         	}
         }
         
