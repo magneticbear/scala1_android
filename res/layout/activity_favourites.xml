@@ -27,11 +27,40 @@
 
     </LinearLayout>
 
-<RelativeLayout
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/fav_tab_bg_repeat" >
+    android:layout_height="wrap_content" >
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/spaceball" />
+
+    <ToggleButton
+        android:id="@+id/favourites_button_events"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/rocker_off_tile"
+        android:text="ToggleButton" />
+
+    <ToggleButton
+        android:id="@+id/favourites_button_speakers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/rocker_on_tile"
+        android:text="ToggleButton" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:src="@drawable/spaceball" />
+
+</LinearLayout>
     
 </LinearLayout>
