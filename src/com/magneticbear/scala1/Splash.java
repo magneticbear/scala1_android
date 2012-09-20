@@ -15,6 +15,17 @@ public class Splash extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         
+        UserData.load_or_create();
+        
+        long splash_time;
+        if(UserData.has_seen_splash)
+        {
+        	splash_time = 1000;
+        }
+        else
+        {
+        	splash_time = 2000;
+        }
         
         Timer splashtimer = new Timer();
         splashtimer.schedule(new TimerTask() 
@@ -26,7 +37,7 @@ public class Splash extends Activity {
 				startActivity(intent);
 		        finish();
 			}
-		}, 2000);
+		}, splash_time);
 
     }
 
