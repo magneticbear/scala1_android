@@ -17,7 +17,6 @@ public class UserData
 			fav_speakers = new ArrayList<Struct_Speaker>();
 		}
 	}
-	
 	public static void add_fav(Struct_Event event)
 	{
 		fav_events.add(event);
@@ -34,5 +33,27 @@ public class UserData
 	{
 		fav_speakers.remove(speaker);
 	}
-
+	public static Boolean is_fav(Struct_Event event)
+	{
+		if(fav_events.contains(event))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public static Boolean is_fav(Struct_Speaker speaker)
+	{
+		if(fav_speakers.contains(speaker))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
 }
