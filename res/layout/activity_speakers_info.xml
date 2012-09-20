@@ -5,29 +5,36 @@
     android:background="#EEEEEE"
     android:orientation="vertical" >
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:background="@drawable/title_tile" >
-
-     <TextView
-        android:id="@+id/speaker_info_title"
+        <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical|center_horizontal|center"
-        android:text="Speaker Name Here"
-        android:textStyle="bold"
-        android:textColor="#f2fafc" 
-        android:textSize="28dp"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:shadowColor="#076f96"
-        android:shadowDy="-1"
-        />
+        android:layout_height="wrap_content"
+        android:background="@drawable/title_tile" >
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/speaker_info_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:shadowColor="#076f96"
+            android:shadowDy="-1"
+            android:singleLine="true"
+            android:text="Speaker Name Here"
+            android:textColor="#f2fafc"
+            android:textSize="28dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/speaker_info_bar_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="17dp"
+            android:src="@drawable/eventinfo_topbar_star_off" />
+
+    </RelativeLayout>
     
     <WebView 
         android:id="@+id/webview_speaker_info"
