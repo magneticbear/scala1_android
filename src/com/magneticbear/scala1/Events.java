@@ -92,7 +92,7 @@ public class Events extends Activity {
 	    	}
 			
 			// Create an adapter
-			Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, events_objects);
+			Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, events_objects, true);
 			
 			// Connect list to adapter
 			ListView lv = (ListView)findViewById(R.id.events_list);

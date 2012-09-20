@@ -22,7 +22,7 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 {
 	private ArrayList<Struct_Event> items;
 
-    public Struct_Event_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Event> items) 
+    public Struct_Event_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Event> items, Boolean use_seps) 
     {
 	    super(context, textViewResourceId, items);
 	    
@@ -30,7 +30,7 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	    this.items = items;
 	    
 	    // Create separators
-	    createSeparators();
+	    if(use_seps) createSeparators();
     }
     
     private void createSeparators()

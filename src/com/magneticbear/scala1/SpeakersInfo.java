@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.SslErrorHandler;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.net.http.SslError;
@@ -85,6 +86,18 @@ public class SpeakersInfo extends Activity {
         if(savedInstanceState != null)
         {
         	speakers_info_webview.restoreState(savedInstanceState);
+        }
+        
+        // Check if this is a fav already
+        UserData.load_or_create();
+        Struct_Speaker box = new Struct_Speaker("BOX", speaker_id_to_load);
+        if(UserData.is_fav(box))
+        {
+        	((ImageView)findViewById(R.id.speaker_info_bar_star)).setImageResource(R.drawable.eventinfo_topbar_star_on);
+        }
+        else
+        {
+        	((ImageView)findViewById(R.id.speaker_info_bar_star)).setImageResource(R.drawable.eventinfo_topbar_star_off);
         }
     }
 

@@ -57,7 +57,7 @@ public class Favourites extends Activity {
     {
     	UserData.load_or_create();
     	ArrayList<Struct_Event> local_event = (ArrayList)UserData.fav_events.clone();
-    	Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, local_event);
+    	Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, local_event, false);
     	((ListView)findViewById(R.id.favourites_list)).setAdapter(adapter);
     	
     }

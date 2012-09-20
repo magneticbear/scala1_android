@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class EventInfo extends Activity 
@@ -87,6 +88,19 @@ public class EventInfo extends Activity
         if(savedInstanceState != null)
         {
         	event_info_webview.restoreState(savedInstanceState);
+        }
+        
+        // Check if this is a fav already
+        UserData.load_or_create();
+        Struct_Event box = new Struct_Event("BOX");
+        box.eventid = event_id_to_load + "";
+        if(UserData.is_fav(box))
+        {
+        	((ImageView)findViewById(R.id.event_info_bar_star)).setImageResource(R.drawable.eventinfo_topbar_star_on);
+        }
+        else
+        {
+        	((ImageView)findViewById(R.id.event_info_bar_star)).setImageResource(R.drawable.eventinfo_topbar_star_off);
         }
     }
 
