@@ -70,5 +70,11 @@
         android:minWidth="80dp"/>
 
 </RelativeLayout>
+
+<ListView
+    android:id="@+id/favourites_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    android:background="#FFFFFF"/>
     
 </LinearLayout>
