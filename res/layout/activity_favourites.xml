@@ -51,23 +51,23 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/middle"
-        android:background="@drawable/fav_tab_right_down"
+        android:background="@drawable/fav_tab_right_up"
+        android:minWidth="80dp"
         android:padding="@dimen/fav_rocker_padding"
-        android:text="Speakers" 
-        android:textColor="#FFFFFF"
-        android:minWidth="80dp"/>
+        android:text="Speakers"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/rocker_events"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-		android:layout_centerVertical="true"
+        android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/middle"
-        android:background="@drawable/fav_tab_right_up"
+        android:background="@drawable/fav_tab_left_down"
+        android:minWidth="80dp"
         android:padding="@dimen/fav_rocker_padding"
-        android:text="Events" 
-        android:textColor="#FFFFFF"
-        android:minWidth="80dp"/>
+        android:text="Events"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>
 
