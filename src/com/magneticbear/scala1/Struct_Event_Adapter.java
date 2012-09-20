@@ -104,6 +104,7 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
     @Override
     public View getView(int position, View convertView, ViewGroup parent) 
     {
+		final ViewGroup Parent = parent;
         final Struct_Event event = items.get(position);
         if (event != null) 
         {
@@ -153,15 +154,15 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 				}
 				
 				// Set the click link
-				title.setOnClickListener(new OnClickListener() 
+				convertView.setOnClickListener(new OnClickListener() 
 				{
 					@Override
 					public void onClick(View v) 
 					{
 						// Go to event of index
-	        			Intent intent = new Intent(getContext(), EventInfo.class);
-	        			intent.putExtra("index", event.eventid);
-	                    getContext().startActivity(intent);
+	        			Intent intent = new Intent(Parent.getContext(), EventInfo.class);
+	        			intent.putExtra("index", Integer.parseInt(event.eventid));
+	                    Parent.getContext().startActivity(intent);
 					}
 				});
         	}

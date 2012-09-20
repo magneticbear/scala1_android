@@ -7,10 +7,12 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,7 +67,8 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
     @Override
     public View getView(int position, View convertView, ViewGroup parent) 
     {
-        Struct_Speaker speaker = items.get(position);
+    	final ViewGroup Parent = parent;
+        final Struct_Speaker speaker = items.get(position);
         if (speaker != null) 
         {
         	// Is this a separator or an actual event
@@ -107,6 +110,19 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 				{
 				      title.setText(speaker.name);                            
 				}
+				
+				// Set the click link
+				convertView.setOnClickListener(new OnClickListener() 
+				{
+					@Override
+					public void onClick(View v) 
+					{
+						// Go to event of index
+	        			Intent intent = new Intent(Parent.getContext(), SpeakersInfo.class);
+	        			intent.putExtra("index", speaker.speakerid);
+	                    Parent.getContext().startActivity(intent);
+					}
+				});
         	}
         }
         

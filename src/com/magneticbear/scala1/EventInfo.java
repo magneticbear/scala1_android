@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class EventInfo extends Activity 
 {	
-	static Bundle save_event;
+	Bundle save_event;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) 

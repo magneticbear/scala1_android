@@ -13,7 +13,7 @@ import android.net.http.SslError;
 
 public class SpeakersInfo extends Activity {
 
-	static Bundle save_speaker;
+    Bundle save_speaker;
     @Override
     public void onCreate(Bundle savedInstanceState) 
     {
