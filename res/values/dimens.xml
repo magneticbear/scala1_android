@@ -11,4 +11,5 @@
     <dimen name="speakers_name_padding">10dp</dimen>
     <dimen name="speakers_star_padding">2dp</dimen>
     <dimen name="speakers_icon_padding">6dp</dimen>
+    <dimen name="fav_rocker_padding">5dp</dimen>
 </resources>
