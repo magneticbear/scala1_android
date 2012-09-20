@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ListView;
 
 public class Favourites extends Activity {
 
@@ -14,6 +15,7 @@ public class Favourites extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
         setupButtons();
+        show_events();
     }
 
     @Override
@@ -34,6 +36,7 @@ public class Favourites extends Activity {
 			{
 				rocker_events.setBackgroundResource(R.drawable.fav_tab_left_down);
 				rocker_speakers.setBackgroundResource(R.drawable.fav_tab_right_up);
+				show_events();
 			}
 		});
     	rocker_speakers.setOnClickListener(new OnClickListener() 
@@ -43,7 +46,38 @@ public class Favourites extends Activity {
 			{
 				rocker_events.setBackgroundResource(R.drawable.fav_tab_left_up);
 				rocker_speakers.setBackgroundResource(R.drawable.fav_tab_right_down);
+				show_speakers();
 			}
 		});
     }
+    
+    public void show_events()
+    {
+    	UserData.load_or_create();
+    	Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, UserData.fav_events);
+    	((ListView)findViewById(R.id.favourites_list)).setAdapter(adapter);
+    	
+    }
+    public void show_speakers()
+    {
+    	UserData.load_or_create();
+     	Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, UserData.fav_speakers);
+     	((ListView)findViewById(R.id.favourites_list)).setAdapter(adapter);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
