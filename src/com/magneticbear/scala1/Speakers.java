@@ -16,8 +16,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.database.CursorJoiner.Result;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.ListView;
@@ -125,7 +127,7 @@ public class Speakers extends Activity {
 		} 
 		catch (Exception e) 
 		{
-			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+			//Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
     	
@@ -144,7 +146,7 @@ public class Speakers extends Activity {
 			int 		 statusCode = statusLine.getStatusCode();
 			if (statusCode == 200) 
 			{
-				Toast.makeText(getBaseContext(), "HTTP 200 on speakers feed GET.", Toast.LENGTH_LONG).show();
+				//Toast.makeText(getBaseContext(), "HTTP 200 on speakers feed GET.", Toast.LENGTH_LONG).show();
 				
 				HttpEntity     entity  = response.getEntity();
 				InputStream    content = entity.getContent();
