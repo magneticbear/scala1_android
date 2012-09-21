@@ -24,7 +24,7 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 	private ArrayList<Struct_Speaker> items;
 	private Boolean show_stars;
 
-    public Struct_Speaker_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Speaker> items, Boolean Show_Stars) 
+    public Struct_Speaker_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Speaker> items, Boolean use_seps, Boolean Show_Stars) 
     {
 	    super(context, textViewResourceId, items);
 	    
@@ -32,7 +32,7 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 	    this.items = items;
 	    
 	    // Create separators
-	    createSeparators();
+	    if(use_seps) createSeparators();
 	    
 	    show_stars = Show_Stars;
     }

@@ -85,7 +85,7 @@ public class Favourites extends Activity {
     {
     	showingEvents = false;
     	ArrayList<Struct_Speaker> local_speaker = (ArrayList)UserData.fav_speakers.clone();
-     	Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, local_speaker, false);
+     	Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, local_speaker, false, false);
      	((ListView)findViewById(R.id.favourites_list)).setAdapter(adapter);
     }
 }
