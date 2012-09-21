@@ -12,18 +12,38 @@ import android.widget.ListView;
 
 public class Favourites extends Activity {
 
+	Boolean showingEvents = true;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
         setupButtons();
-        show_events();
     }
 
+    @Override
+    protected void onResume() 
+    {
+    	refreshFeed();
+    	super.onResume();
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_favourites, menu);
         return true;
+    }
+    
+    public void refreshFeed()
+    {
+    	if(showingEvents)
+    	{
+    		show_events();
+    	}
+    	else
+    	{
+    		show_speakers();
+    	}
     }
     
     public void setupButtons()
@@ -55,6 +75,7 @@ public class Favourites extends Activity {
     
     public void show_events()
     {
+    	showingEvents = true;
     	UserData.load_or_create();
     	ArrayList<Struct_Event> local_event = (ArrayList)UserData.fav_events.clone();
     	Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, local_event, false);
@@ -63,6 +84,7 @@ public class Favourites extends Activity {
     }
     public void show_speakers()
     {
+    	showingEvents = false;
     	UserData.load_or_create();
     	ArrayList<Struct_Speaker> local_speaker = (ArrayList)UserData.fav_speakers.clone();
      	Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, local_speaker);

@@ -31,7 +31,25 @@ public class Events extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
         
-        // Read event feed
+    }
+    
+    @Override
+    protected void onResume() 
+    {
+    	refreshFeed();
+    	super.onResume();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_events, menu);
+        return true;
+    }
+    
+    
+    public void refreshFeed()
+    {
+    	 // Read event feed
         String rawEventFeedJSON = readEventFeed();
         
         // Parse event feed
@@ -107,13 +125,6 @@ public class Events extends Activity {
 			e.printStackTrace();
 		}
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_events, menu);
-        return true;
-    }
-    
     
     public String readEventFeed() 
     {

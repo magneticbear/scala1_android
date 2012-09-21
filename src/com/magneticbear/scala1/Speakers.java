@@ -29,7 +29,23 @@ public class Speakers extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speakers);
-        
+    }
+    
+    @Override
+    protected void onResume() 
+    {
+    	refreshFeed();
+    	super.onResume();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_speakers, menu);
+        return true;
+    }
+    
+    public void refreshFeed()
+    {
         // Read event feed
         String rawEventFeedJSON = readSpeakersFeed();
         
@@ -112,12 +128,7 @@ public class Speakers extends Activity {
 			Toast.makeText(getBaseContext(), e.getMessage(), Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_speakers, menu);
-        return true;
+    	
     }
     
     public String readSpeakersFeed() 
