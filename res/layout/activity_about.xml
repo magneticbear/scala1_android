@@ -12,18 +12,17 @@
     android:background="@drawable/title_tile" >
 
      <TextView
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical|center_horizontal|center"
-        android:text="@string/about"
-        android:textStyle="bold"
-        android:textColor="#f2fafc" 
-        android:textSize="28dp"
-        android:shadowColor="#076f96"
-        android:shadowDy="-1"
-        />
+         android:id="@+id/textView1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center_vertical"
+         android:gravity="center_vertical|center_horizontal|center"
+         android:shadowColor="#076f96"
+         android:shadowDy="-1"
+         android:text="@string/about"
+         android:textColor="#f2fafc"
+         android:textSize="@dimen/top_bar_font_size"
+         android:textStyle="bold" />
 
     </LinearLayout>
 

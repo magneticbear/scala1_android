@@ -34,7 +34,7 @@
             android:singleLine="true"
             android:text="Speaker Name Here"
             android:textColor="#f2fafc"
-            android:textSize="28dp"
+            android:textSize="@dimen/top_bar_font_size"
             android:textStyle="bold" />
 
         <ImageView

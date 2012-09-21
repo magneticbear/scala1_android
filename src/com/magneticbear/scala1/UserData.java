@@ -21,6 +21,8 @@ public class UserData
 			fav_speakers = new ArrayList<Struct_Speaker>();
 			
 			SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
+			if(settings == null)
+				return;
 			
 			// Get all saved
 			Map<String, ?> saved = settings.getAll();
@@ -37,7 +39,7 @@ public class UserData
 			iter = 0;
 			while(saved.containsKey("s" + iter))
 			{
-				int fav_speaker_id = (Integer)saved.get("e" + iter);
+				int fav_speaker_id = (Integer)saved.get("s" + iter);
 				add_fav(ServerData.get_speaker_by_id(fav_speaker_id));
 				iter++;
 			}

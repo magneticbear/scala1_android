@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/speaker_icon"
         android:layout_alignRight="@+id/speaker_icon"
+        android:layout_marginBottom="2dp"
         android:padding="@dimen/speakers_star_padding"
         android:src="@drawable/speakers_avator_star_off" />
 

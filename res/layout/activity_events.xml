@@ -19,7 +19,7 @@
         android:text="@string/events"
         android:textStyle="bold"
         android:textColor="#f2fafc" 
-        android:textSize="28dp"
+        android:textSize="@dimen/top_bar_font_size"
         android:shadowColor="#076f96"
         android:shadowDy="-1"
         />

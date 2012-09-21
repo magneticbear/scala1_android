@@ -18,7 +18,7 @@ public class Splash extends Activity {
         ServerData.pull();
         UserData.load_or_create(getBaseContext());
         
-        long splash_time = 1000;
+        long splash_time = 3000;
         
         Timer splashtimer = new Timer();
         splashtimer.schedule(new TimerTask() 
