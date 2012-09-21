@@ -78,6 +78,15 @@ public class EventInfo extends Activity
 				
 				return false;
         	 }
+        	 
+        	@Override
+        	public void onPageFinished(WebView view, String url) 
+        	 {
+        		super.onPageFinished(view, url);
+        		findViewById(R.id.event_info_progress_spacer).setVisibility(0x8); // gone
+        		findViewById(R.id.event_info_progress).setVisibility(0x8);	//gone
+        		findViewById(R.id.webview_event_info).setVisibility(0x0);	//here
+        	}
         });
         
         event_info_webview.getSettings().setJavaScriptEnabled(true);
