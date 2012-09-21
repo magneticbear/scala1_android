@@ -22,8 +22,9 @@ import android.widget.Toast;
 public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker> 
 {
 	private ArrayList<Struct_Speaker> items;
+	private Boolean show_stars;
 
-    public Struct_Speaker_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Speaker> items) 
+    public Struct_Speaker_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Speaker> items, Boolean Show_Stars) 
     {
 	    super(context, textViewResourceId, items);
 	    
@@ -32,6 +33,8 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 	    
 	    // Create separators
 	    createSeparators();
+	    
+	    show_stars = Show_Stars;
     }
     
     private void createSeparators()
@@ -103,7 +106,14 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 	                LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	                
 	                // Inflate an event row
-	                convertView = inflator.inflate(R.layout.struct_speaker_adapater_row, null);
+	                if(show_stars)
+	                {
+	                	convertView = inflator.inflate(R.layout.struct_speaker_adapater_row, null);
+	                }
+	                else
+	                {
+	                	convertView = inflator.inflate(R.layout.struct_speaker_adapater_row_no_star, null);
+	                }
 	            }
 	        	
 	            // Set the title

@@ -26,9 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/speaker_icon"
         android:layout_alignRight="@+id/speaker_icon"
-        android:paddingLeft="0dp"
         android:paddingBottom="5dp"
-        android:src="@drawable/speakers_avator_star_off" />
+        android:paddingLeft="0dp"
+        android:src="@drawable/speakers_avator_star_off"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/struct_speaker_adapter_row_title"

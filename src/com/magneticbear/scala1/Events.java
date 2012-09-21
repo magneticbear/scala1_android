@@ -50,7 +50,7 @@ public class Events extends Activity {
     public void refreshFeed()
     {	
 		// Create an adapter
-		Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, (ArrayList<Struct_Event>)ServerData.events.clone(), true);
+		Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, (ArrayList<Struct_Event>)ServerData.events.clone(), true, true);
 		
 		// Connect list to adapter
 		ListView lv = (ListView)findViewById(R.id.events_list);

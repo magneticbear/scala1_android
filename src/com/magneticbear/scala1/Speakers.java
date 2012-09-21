@@ -49,7 +49,7 @@ public class Speakers extends Activity {
     public void refreshFeed()
     {
 		// Create an adapter
-		Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, (ArrayList<Struct_Speaker>)ServerData.speakers.clone());
+		Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, (ArrayList<Struct_Speaker>)ServerData.speakers.clone(), true);
 		
 		// Connect list to adapter
 		ListView lv = (ListView)findViewById(R.id.speakers_list);

@@ -21,8 +21,9 @@ import android.widget.Toast;
 public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event> 
 {
 	private ArrayList<Struct_Event> items;
+	private Boolean show_stars;
 
-    public Struct_Event_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Event> items, Boolean use_seps) 
+    public Struct_Event_Adapter(Context context, int textViewResourceId, ArrayList<Struct_Event> items, Boolean use_seps,  Boolean Show_Stars) 
     {
 	    super(context, textViewResourceId, items);
 	    
@@ -31,6 +32,8 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	    
 	    // Create separators
 	    if(use_seps) createSeparators();
+	    
+	    show_stars = Show_Stars;
     }
     
     private void createSeparators()
@@ -139,7 +142,14 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 	                LayoutInflater inflator = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	                
 	                // Inflate an event row
-	                convertView = inflator.inflate(R.layout.struct_event_adapater_row, null);
+	                if(show_stars)
+	                {
+	                	convertView = inflator.inflate(R.layout.struct_event_adapater_row, null);
+	                }
+	                else
+	                {
+	                	convertView = inflator.inflate(R.layout.struct_event_adapater_row_no_star, null);
+	                }
 	            }
 	        	
 	            // Set the title and subtitle

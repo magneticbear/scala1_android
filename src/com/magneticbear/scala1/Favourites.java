@@ -77,7 +77,7 @@ public class Favourites extends Activity {
     {
     	showingEvents = true;
     	ArrayList<Struct_Event> local_event = (ArrayList)UserData.fav_events.clone();
-    	Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, local_event, false);
+    	Struct_Event_Adapter adapter = new Struct_Event_Adapter(getBaseContext(), R.id.struct_event_adapter_row_title, local_event, false, false);
     	((ListView)findViewById(R.id.favourites_list)).setAdapter(adapter);
     	
     }
@@ -85,7 +85,7 @@ public class Favourites extends Activity {
     {
     	showingEvents = false;
     	ArrayList<Struct_Speaker> local_speaker = (ArrayList)UserData.fav_speakers.clone();
-     	Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, local_speaker);
+     	Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, local_speaker, false);
      	((ListView)findViewById(R.id.favourites_list)).setAdapter(adapter);
     }
 }

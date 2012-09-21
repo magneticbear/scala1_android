@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0.01"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/struct_event_adapter_row_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:minLines="1"
+            android:paddingTop="@dimen/large_font_padding"
+            android:paddingLeft="@dimen/large_font_padding"
+            android:singleLine="true"
+            android:text="Title Here Scala Scala Yo"
+            android:textColor="#0da4d0"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/struct_event_adapter_row_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="@integer/one"
+            android:paddingBottom="@dimen/large_font_padding"
+            android:paddingTop="@dimen/teeny_font_padding"
+            android:paddingLeft="@dimen/large_font_padding"
+            android:text="Subtitle Here HELP IM TRAPPED IN A UNIVERSE FACTORY"
+            android:textColor="#999999"
+            android:textSize="@dimen/teeny_font_size"
+            android:textStyle="italic" />
+
+        <ImageView
+            android:id="@+id/fav_star_event_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical|fill"
+            android:padding="@dimen/star_adapter_row_padding"
+            android:src="@drawable/events_star_off"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/events_arrow" 
+            android:padding="@dimen/star_adapter_row_padding"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
