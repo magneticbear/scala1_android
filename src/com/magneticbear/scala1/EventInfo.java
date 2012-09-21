@@ -111,17 +111,18 @@ public class EventInfo extends Activity
 			@Override
 			public void onClick(View v) 
 			{
-				UserData.load_or_create();
 		        if(UserData.is_fav(ServerData.get_event_by_id(closure_saved_id)))
 		        {
 		        	// already a fav make not fav
 		        	UserData.remove_fav(ServerData.get_event_by_id(closure_saved_id));
+		        	UserData.write_changes(getBaseContext());
 		        	fav_proc(closure_saved_id);
 		        }
 		        else
 		        {
 		        	// not a fav make a fav
 		        	UserData.add_fav(ServerData.get_event_by_id(closure_saved_id));
+		        	UserData.write_changes(getBaseContext());
 		        	fav_proc(closure_saved_id);
 		        }
 			}
@@ -131,7 +132,6 @@ public class EventInfo extends Activity
     public void fav_proc(int id)
     {
     	// Check if this is a fav already
-        UserData.load_or_create();
         if(UserData.is_fav(ServerData.get_event_by_id(id)))
         {
         	((ImageView)findViewById(R.id.event_info_bar_star)).setImageResource(R.drawable.eventinfo_topbar_star_on);

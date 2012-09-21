@@ -133,22 +133,22 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 					@Override
 					public void onClick(View v) 
 					{
-						UserData.load_or_create();
 						if(UserData.is_fav(speaker))
 						{
 							UserData.remove_fav(speaker);
+							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.speakers_avator_star_off);
 						}
 						else
 						{
 							UserData.add_fav(speaker);
+							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.speakers_avator_star_on);
 						}
 					}
 				});
 				
 				// Check if already is a fav
-				UserData.load_or_create();
 				if(UserData.is_fav(speaker))
 				{
 					star.setImageResource(R.drawable.speakers_avator_star_on);
@@ -164,15 +164,16 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 					@Override
 					public void onClick(View v) 
 					{
-						UserData.load_or_create();
 						if(UserData.is_fav(speaker))
 						{
 							UserData.remove_fav(speaker);
+							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.speakers_avator_star_off);
 						}
 						else
 						{
 							UserData.add_fav(speaker);
+							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.speakers_avator_star_on);
 						}
 					}

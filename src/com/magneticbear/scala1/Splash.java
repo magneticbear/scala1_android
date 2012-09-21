@@ -16,7 +16,7 @@ public class Splash extends Activity {
         setContentView(R.layout.activity_splash);
         
         ServerData.pull();
-        UserData.load_or_create();
+        UserData.load_or_create(getBaseContext());
         
         long splash_time = 1000;
         

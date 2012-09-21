@@ -174,15 +174,16 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 					@Override
 					public void onClick(View v) 
 					{
-						UserData.load_or_create();
 						if(UserData.is_fav(event))
 						{
 							UserData.remove_fav(event);
+							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.events_star_off);
 						}
 						else
 						{
 							UserData.add_fav(event);
+							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.events_star_on);
 						}
 					}
@@ -190,7 +191,6 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 				
 				
 				// Check if already is a fav
-				UserData.load_or_create();
 				if(UserData.is_fav(event))
 				{
 					star.setImageResource(R.drawable.events_star_on);

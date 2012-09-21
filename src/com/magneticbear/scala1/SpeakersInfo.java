@@ -110,18 +110,19 @@ public class SpeakersInfo extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
-				UserData.load_or_create();
 				Struct_Speaker box = new Struct_Speaker("BOX", closure_saved_id);
 		        if(UserData.is_fav(box))
 		        {
 		        	// already a fav make not fav
 		        	UserData.remove_fav(box);
+		        	UserData.write_changes(getBaseContext());
 		        	fav_proc(closure_saved_id);
 		        }
 		        else
 		        {
 		        	// not a fav make a fav
 		        	UserData.add_fav(ServerData.get_speaker_by_id(closure_saved_id));
+		        	UserData.write_changes(getBaseContext());
 		        	fav_proc(closure_saved_id);
 		        }
 			}
@@ -131,7 +132,6 @@ public class SpeakersInfo extends Activity {
     public void fav_proc(int id)
     {
     	 // Check if this is a fav already
-        UserData.load_or_create();
         Struct_Speaker box = new Struct_Speaker("BOX", id);
         if(UserData.is_fav(box))
         {
