@@ -30,7 +30,7 @@ public class SpeakersInfo extends Activity {
         setContentView(R.layout.activity_speakers_info);
         
         // Setup debug data
-        String speaker_title_to_display = "Speaker Info";
+
         int speaker_id_to_load = -1;
         
         // Setup real data
@@ -38,6 +38,8 @@ public class SpeakersInfo extends Activity {
     	{
         	if(getIntent().getExtras().containsKey("speaker")) speaker_id_to_load = getIntent().getExtras().getInt("speaker");
     	}
+        String speaker_title_to_display = ServerData.get_speaker_by_id(speaker_id_to_load).name;
+        
         
         // Navigate to speaker url
         WebView speakers_info_webview = (WebView)findViewById(R.id.webview_speaker_info);

@@ -30,7 +30,6 @@ public class EventInfo extends Activity
         setContentView(R.layout.activity_event_info);
         
         // Setup debug data
-        String event_title_to_display = "Event Info";
         int event_id_to_load = -1;
         
         // Setup real data
@@ -38,6 +37,7 @@ public class EventInfo extends Activity
     	{
     		if(getIntent().getExtras().containsKey("event")) event_id_to_load = getIntent().getExtras().getInt("event");
     	}
+        String event_title_to_display = ServerData.get_event_by_id(event_id_to_load).event_or_seperator_title;
         
         // Navigate to event url
         WebView event_info_webview = (WebView)findViewById(R.id.webview_event_info);
