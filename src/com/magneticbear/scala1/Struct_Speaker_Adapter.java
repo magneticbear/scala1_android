@@ -8,6 +8,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -120,7 +121,7 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 					{
 						// Go to event of index
 	        			Intent intent = new Intent(Parent.getContext(), SpeakersInfo.class);
-	        			intent.putExtra("index", speaker.speakerid);
+	        			intent.putExtra("speaker", speaker.speakerid);
 	                    Parent.getContext().startActivity(intent);
 					}
 				});

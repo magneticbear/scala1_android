@@ -31,12 +31,12 @@ public class EventInfo extends Activity
         
         // Setup debug data
         String event_title_to_display = "Event Info";
-        int event_id_to_load = 1;
+        int event_id_to_load = -1;
         
         // Setup real data
         if(getIntent().getExtras() != null) 
     	{
-    		if(getIntent().getExtras().containsKey("index")) event_id_to_load = getIntent().getExtras().getInt("index");
+    		if(getIntent().getExtras().containsKey("event")) event_id_to_load = getIntent().getExtras().getInt("event");
     	}
         
         // Navigate to event url
@@ -63,7 +63,7 @@ public class EventInfo extends Activity
         		{
         			// Go to speaker of index
         			Intent intent = new Intent(view.getContext(), SpeakersInfo.class);
-        			intent.putExtra("index", Integer.parseInt(index));
+        			intent.putExtra("speaker", Integer.parseInt(index));
                     startActivity(intent);
         			//startActivityForResult(intent, 0);
         		}
@@ -71,7 +71,7 @@ public class EventInfo extends Activity
         		{
         			// Go to event of index
         			Intent intent = new Intent(view.getContext(), EventInfo.class);
-        			intent.putExtra("index", Integer.parseInt(index));
+        			intent.putExtra("event", Integer.parseInt(index));
                     startActivity(intent);
         			//startActivityForResult(intent, 0);
         		}
@@ -103,18 +103,16 @@ public class EventInfo extends Activity
 			public void onClick(View v) 
 			{
 				UserData.load_or_create();
-				Struct_Event box = new Struct_Event("BOX");
-			    box.eventid = closure_saved_id + "";
-		        if(UserData.is_fav(box))
+		        if(UserData.is_fav(ServerData.get_event_by_id(closure_saved_id)))
 		        {
 		        	// already a fav make not fav
-		        	UserData.remove_fav(box);
+		        	UserData.remove_fav(ServerData.get_event_by_id(closure_saved_id));
 		        	fav_proc(closure_saved_id);
 		        }
 		        else
 		        {
 		        	// not a fav make a fav
-		        	UserData.add_fav(box);
+		        	UserData.add_fav(ServerData.get_event_by_id(closure_saved_id));
 		        	fav_proc(closure_saved_id);
 		        }
 			}
@@ -125,9 +123,7 @@ public class EventInfo extends Activity
     {
     	// Check if this is a fav already
         UserData.load_or_create();
-        Struct_Event box = new Struct_Event("BOX");
-        box.eventid = id + "";
-        if(UserData.is_fav(box))
+        if(UserData.is_fav(ServerData.get_event_by_id(id)))
         {
         	((ImageView)findViewById(R.id.event_info_bar_star)).setImageResource(R.drawable.eventinfo_topbar_star_on);
         }

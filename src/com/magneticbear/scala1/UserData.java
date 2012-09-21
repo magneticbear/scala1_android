@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class UserData 
 {
-	public static Boolean 					has_seen_splash = false;
 	public static ArrayList<Struct_Event>   fav_events   	= null;
 	public static ArrayList<Struct_Speaker> fav_speakers 	= null;
 	
@@ -29,7 +28,7 @@ public class UserData
 	{
 		for(int iter = 0; iter < fav_events.size(); iter++)
 		{
-			if(fav_events.get(iter).eventid.equals(event.eventid))
+			if(fav_events.get(iter).eventid == event.eventid)
 			{
 				fav_events.remove(iter);
 				return;
@@ -50,7 +49,7 @@ public class UserData
 	{
 		for(int iter = 0; iter < fav_events.size(); iter++)
 		{
-			if(fav_events.get(iter).eventid.equals(event.eventid))
+			if(fav_events.get(iter).eventid == event.eventid)
 			{
 				return true;
 			}

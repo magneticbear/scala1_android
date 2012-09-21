@@ -162,7 +162,7 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 					{
 						// Go to event of index
 	        			Intent intent = new Intent(Parent.getContext(), EventInfo.class);
-	        			intent.putExtra("index", Integer.parseInt(event.eventid));
+	        			intent.putExtra("event", event.eventid);
 	                    Parent.getContext().startActivity(intent);
 					}
 				});

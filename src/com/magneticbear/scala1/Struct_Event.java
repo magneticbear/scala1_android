@@ -13,9 +13,9 @@ public class Struct_Event
 	public String event_or_seperator_title;
 	public Date   start_date;
 	public String location;
-	public String eventid;
+	public int    eventid;
 	
-	public Struct_Event(String Title, String Start, String Location, String EventID)
+	public Struct_Event(String Title, String Start, String Location, int EventID)
 	{
 		isSeparator = false;
 		event_or_seperator_title = Title;
