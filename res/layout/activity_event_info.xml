@@ -10,11 +10,23 @@
         android:layout_height="wrap_content"
         android:background="@drawable/title_tile" >
 
+        <ImageView
+            android:id="@+id/event_info_bar_star_invis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17dp"
+            android:visibility="invisible"
+            android:src="@drawable/eventinfo_topbar_star_off" />
+        
         <TextView
             android:id="@+id/event_info_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/event_info_bar_star"
+            android:layout_toRightOf="@+id/event_info_bar_star_invis"
             android:ellipsize="end"
             android:gravity="center_horizontal"
             android:shadowColor="#076f96"
