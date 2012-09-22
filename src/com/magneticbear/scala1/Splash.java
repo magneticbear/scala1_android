@@ -3,6 +3,7 @@ package com.magneticbear.scala1;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -15,23 +16,25 @@ public class Splash extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         
-        ServerData.pull();
-        UserData.load_or_create(getBaseContext());
-        
-        long splash_time = 3000;
-        
-        Timer splashtimer = new Timer();
-        splashtimer.schedule(new TimerTask() 
+        new AsyncTask<Void, Void, Void>() 
         {
 			@Override
-			public void run()
+			protected Void doInBackground(Void... params) {
+				
+				ServerData.pull();
+		        UserData.load_or_create(getBaseContext());
+				return null;
+			}
+			
+			@Override
+			protected void onPostExecute(Void result) 
 			{
 				Intent intent = new Intent(getBaseContext(), Home.class);
 				startActivity(intent);
 		        finish();
+				super.onPostExecute(result);
 			}
-		}, splash_time);
-
+		}.execute((Void)null);
     }
 
     @Override
