@@ -32,11 +32,11 @@ public class Home extends Activity {
         setupButtons();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_home, menu);
-        return true;
-    }
+    // Dont show the options menu
+   @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		return false;
+	}
     
     @Override
     protected void onDestroy() {

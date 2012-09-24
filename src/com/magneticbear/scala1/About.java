@@ -18,11 +18,11 @@ public class About extends Activity {
         playground_webview.loadUrl(getString(R.string.url_about));
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_about, menu);
-        return true;
-    }
+    // Dont show the options menu
+   @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		return false;
+	}
     
     @Override
     public void onBackPressed() {

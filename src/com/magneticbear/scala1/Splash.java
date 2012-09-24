@@ -37,9 +37,9 @@ public class Splash extends Activity {
 		}.execute((Void)null);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_splash, menu);
-        return true;
-    }
+    // Dont show the options menu
+   @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		return false;
+	}
 }

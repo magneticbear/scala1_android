@@ -28,11 +28,11 @@ public class Favourites extends Activity {
     	super.onResume();
     }
     
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_favourites, menu);
-        return true;
-    }
+    // Dont show the options menu
+   @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		return false;
+	}
     
     public void refreshFeed()
     {

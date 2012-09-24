@@ -152,11 +152,11 @@ public class SpeakersInfo extends Activity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_speakers_info, menu);
-        return true;
-    }
+    // Dont show the options menu
+   @Override
+	public boolean onPrepareOptionsMenu(Menu menu) {
+		return false;
+	}
     
     @Override
     protected void onPause() 
