@@ -3,8 +3,8 @@
     <string name="app_name">Scala1</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_splash">Splash</string>
-    <string name="title_activity_home">Scala1 Home</string>
+    <string name="title_activity_splash">Scala1</string>
+    <string name="title_activity_home">Scala1</string>
     <string name="button_events_text">Events</string>
     <string name="button_speakers_text">Speakers</string>
     <string name="button_favourites_text">Favourites</string>
