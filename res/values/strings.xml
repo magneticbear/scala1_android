@@ -7,7 +7,7 @@
     <string name="title_activity_home">Scala1</string>
     <string name="button_events_text">Events</string>
     <string name="button_speakers_text">Speakers</string>
-    <string name="button_favourites_text">Favourites</string>
+    <string name="button_favourites_text">Favorites</string>
     <string name="button_playground_text">Playground</string>
     <string name="button_about_text">About Scala1</string>
     <string name="title_activity_speakers">Speakers</string>
@@ -19,7 +19,7 @@
     <string name="title_activity_playground">Playground</string>
     <string name="playground">Playground</string>
     <string name="speakers">Speakers</string>
-    <string name="favourites">Favourites</string>
+    <string name="favourites">Favorites</string>
     <string name="events">Events</string>
     <string name="event_title">Event Title</string>
     <string name="about">About</string>
