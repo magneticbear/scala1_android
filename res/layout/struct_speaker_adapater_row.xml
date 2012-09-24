@@ -9,7 +9,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="@dimen/speakers_icon_padding"
-        android:src="@drawable/speaker_default" />
+        android:src="@drawable/speaker_default"
+        android:adjustViewBounds="true"
+        android:maxWidth="64dp"
+        android:maxHeight="64dp"/>
     
     <ImageView
         android:id="@+id/arrow"

@@ -6,8 +6,14 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import com.koushikdutta.urlimageviewhelper.UrlImageViewCallback;
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
@@ -169,7 +175,8 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 				}
 				
 				// Catch the user icon click
-				convertView.findViewById(R.id.speaker_icon).setOnClickListener(new OnClickListener() 
+				ImageView user_icon = (ImageView)convertView.findViewById(R.id.speaker_icon);
+				user_icon.setOnClickListener(new OnClickListener() 
 				{
 					@Override
 					public void onClick(View v) 
@@ -188,7 +195,10 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 						}
 					}
 				});
-        	}
+				
+				// Set user icon image, thank you smart loaders (: <3 ill buy you a beer
+				UrlImageViewHelper.setUrlDrawable(user_icon, "https://scala1.tindr.co/assets/img/profile/" + speaker.speakerid + ".jpg", R.drawable.speaker_default, null);
+	        }
         }
         
         return convertView;
