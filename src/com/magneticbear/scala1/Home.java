@@ -1,5 +1,6 @@
 package com.magneticbear.scala1;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +15,17 @@ public class Home extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        
+        
+        // typesafe link
+        findViewById(R.id.typesafe_logo).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( "http://www.typesafe.com" ) );
+			    startActivity( browse );
+			}
+		});
         
         setupButtons();
     }

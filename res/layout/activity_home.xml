@@ -185,7 +185,7 @@
         android:layout_height="wrap_content" >
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/typesafe_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
