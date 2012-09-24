@@ -23,4 +23,12 @@ public class Playground extends Activity {
         getMenuInflater().inflate(R.menu.activity_playground, menu);
         return true;
     }
+    
+    @Override
+    public void onBackPressed() {
+    	
+    	UserData.mixpanel.track("PlaygroundBack", null);
+    	
+    	super.onBackPressed();
+    }
 }

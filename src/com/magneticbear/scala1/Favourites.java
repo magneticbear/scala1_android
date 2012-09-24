@@ -56,6 +56,8 @@ public class Favourites extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
+				UserData.mixpanel.track("FavouritesRockerEventPress", null);
+				
 				rocker_events.setBackgroundResource(R.drawable.fav_tab_left_down);
 				rocker_speakers.setBackgroundResource(R.drawable.fav_tab_right_up);
 				show_events();
@@ -66,6 +68,8 @@ public class Favourites extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
+				UserData.mixpanel.track("FavouritesRockerSpeakersPress", null);
+				
 				rocker_events.setBackgroundResource(R.drawable.fav_tab_left_up);
 				rocker_speakers.setBackgroundResource(R.drawable.fav_tab_right_down);
 				show_speakers();
@@ -87,6 +91,14 @@ public class Favourites extends Activity {
     	ArrayList<Struct_Speaker> local_speaker = (ArrayList)UserData.fav_speakers.clone();
      	Struct_Speaker_Adapter adapter = new Struct_Speaker_Adapter(getBaseContext(), R.id.struct_speaker_adapter_row_title, local_speaker, false, false);
      	((ListView)findViewById(R.id.favourites_list)).setAdapter(adapter);
+    }
+    
+    @Override
+    public void onBackPressed() {
+    	
+    	UserData.mixpanel.track("FavouritesBack", null);
+    	
+    	super.onBackPressed();
     }
 }
 

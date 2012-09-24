@@ -3,6 +3,8 @@ package com.magneticbear.scala1;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -12,8 +14,13 @@ public class UserData
 	public static ArrayList<Struct_Event>   fav_events   	= null;
 	public static ArrayList<Struct_Speaker> fav_speakers 	= null;
 	
+	public static MixpanelAPI mixpanel;
+	
 	public static void load_or_create(Context context)
 	{
+		// Get mixpanel api instance
+		mixpanel = MixpanelAPI.getInstance(context,"JRR TOKEN GOES HERE");
+		
 		if(fav_events == null || fav_speakers == null)
 		{
 			// Load

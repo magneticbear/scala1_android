@@ -55,4 +55,12 @@ public class Speakers extends Activity {
 		ListView lv = (ListView)findViewById(R.id.speakers_list);
 		lv.setAdapter(adapter);
     }
+    
+    @Override
+    public void onBackPressed() {
+    	
+    	UserData.mixpanel.track("SpeakersListBack", null);
+    	
+    	super.onBackPressed();
+    }
 }

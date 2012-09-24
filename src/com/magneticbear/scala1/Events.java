@@ -97,4 +97,12 @@ public class Events extends Activity {
         }
         return builder.toString();
       }
+    
+    @Override
+    public void onBackPressed() {
+    
+    	UserData.mixpanel.track("EventsListBack", null);
+    	
+    	super.onBackPressed();
+    }
 }

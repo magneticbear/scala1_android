@@ -46,6 +46,7 @@ public class SpeakersInfo extends Activity {
         
         // This is a bugfix for HTTPS pages, that will just not display because the user is not prompted
         // to accept the cert. This is an android bug, and this is the accepted workaround
+        final int sid = speaker_id_to_load;
         speakers_info_webview.setWebViewClient(new WebViewClient() 
         {
         	 public void onReceivedSslError (WebView view, SslErrorHandler handler, SslError error) 
@@ -62,6 +63,8 @@ public class SpeakersInfo extends Activity {
         		 
         		if(type.equals("speakers"))
         		{
+        			UserData.mixpanel.track("SpeakerInfo_" + sid + "_ToSpeakerInfo_" + index, null);
+        			
         			// Go to speaker of index
         			Intent intent = new Intent(view.getContext(), SpeakersInfo.class);
         			intent.putExtra("speaker", Integer.parseInt(index));
@@ -69,6 +72,8 @@ public class SpeakersInfo extends Activity {
         		}
         		else if(type.equals("events"))
         		{
+        			UserData.mixpanel.track("SpeakerInfo_" + sid + "_ToEventInfo_" + index, null);
+        			
         			// Go to event of index
         			Intent intent = new Intent(view.getContext(), EventInfo.class);
         			intent.putExtra("event", Integer.parseInt(index));
@@ -113,6 +118,8 @@ public class SpeakersInfo extends Activity {
 				Struct_Speaker box = new Struct_Speaker("BOX", closure_saved_id);
 		        if(UserData.is_fav(box))
 		        {
+		        	UserData.mixpanel.track("SpeakerInfoItemUnfavedSpeakerID_" + closure_saved_id, null);
+		        	
 		        	// already a fav make not fav
 		        	UserData.remove_fav(box);
 		        	UserData.write_changes(getBaseContext());
@@ -120,6 +127,8 @@ public class SpeakersInfo extends Activity {
 		        }
 		        else
 		        {
+		        	UserData.mixpanel.track("SpeakerInfoItemFavedSpeakerID_" + closure_saved_id, null);
+		        	
 		        	// not a fav make a fav
 		        	UserData.add_fav(ServerData.get_speaker_by_id(closure_saved_id));
 		        	UserData.write_changes(getBaseContext());
@@ -174,5 +183,13 @@ public class SpeakersInfo extends Activity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) 
     {
     	((WebView)findViewById(R.id.webview_speaker_info)).restoreState(savedInstanceState);
+    }
+    
+    @Override
+    public void onBackPressed() {
+    	
+    	UserData.mixpanel.track("SpeakerInfoBack", null);
+    	
+    	super.onBackPressed();
     }
 }

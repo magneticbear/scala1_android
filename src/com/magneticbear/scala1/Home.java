@@ -22,6 +22,8 @@ public class Home extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				UserData.mixpanel.track("HomeToTypeSafeLogo", null);
+				
 				Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( "http://www.typesafe.com" ) );
 			    startActivity( browse );
 			}
@@ -36,6 +38,20 @@ public class Home extends Activity {
         return true;
     }
     
+    @Override
+    protected void onDestroy() {
+    	// Flush mixpanel on the way down
+    	UserData.mixpanel.flush();
+    	super.onDestroy();
+    }
+    
+    @Override
+    public void onBackPressed() {
+    	UserData.mixpanel.track("HomeBack", null);
+    	
+    	super.onBackPressed();
+    }
+    
     public void setupButtons()
     {
     	findViewById(R.id.btn_events).setOnClickListener(new OnClickListener() 
@@ -43,6 +59,8 @@ public class Home extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
+				UserData.mixpanel.track("HomeToEventsList", null);
+				
 				Intent intent = new Intent(getBaseContext(), Events.class);
 				startActivity(intent);
 			}
@@ -52,6 +70,8 @@ public class Home extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
+				UserData.mixpanel.track("HomeToSpeakersList", null);
+				
 				Intent intent = new Intent(getBaseContext(), Speakers.class);
 				startActivity(intent);
 			}
@@ -61,6 +81,8 @@ public class Home extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
+				UserData.mixpanel.track("HomeToFavouritesList", null);
+				
 				Intent intent = new Intent(getBaseContext(), Favourites.class);
 				startActivity(intent);
 			}
@@ -71,6 +93,8 @@ public class Home extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
+				UserData.mixpanel.track("HomeToPlayground", null);
+				
 				Intent intent = new Intent(getBaseContext(), Playground.class);
 				startActivity(intent);
 			}
@@ -80,6 +104,8 @@ public class Home extends Activity {
 			@Override
 			public void onClick(View v) 
 			{
+				UserData.mixpanel.track("HomeToAbout", null);
+				
 				Intent intent = new Intent(getBaseContext(), About.class);
 				startActivity(intent);
 			}

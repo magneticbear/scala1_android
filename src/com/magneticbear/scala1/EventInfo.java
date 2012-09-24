@@ -44,6 +44,7 @@ public class EventInfo extends Activity
         
         // This is a bugfix for HTTPS pages, that will just not display because the user is not prompted
         // to accept the cert. This is an android bug, and this is the accepted workaround
+        final int eid = event_id_to_load;
         event_info_webview.setWebViewClient(new WebViewClient() 
         {
         	// Ignore SSL certs
@@ -61,6 +62,8 @@ public class EventInfo extends Activity
         		 
         		if(type.equals("speakers"))
         		{
+        			UserData.mixpanel.track("EventInfo_" + eid + "_ToSpeakerInfo_" + index, null);
+        			
         			// Go to speaker of index
         			Intent intent = new Intent(view.getContext(), SpeakersInfo.class);
         			intent.putExtra("speaker", Integer.parseInt(index));
@@ -69,6 +72,8 @@ public class EventInfo extends Activity
         		}
         		else if(type.equals("events"))
         		{
+        			UserData.mixpanel.track("EventInfo_" + eid + "_ToEventInfo_" + index, null);
+        			
         			// Go to event of index
         			Intent intent = new Intent(view.getContext(), EventInfo.class);
         			intent.putExtra("event", Integer.parseInt(index));
@@ -113,6 +118,8 @@ public class EventInfo extends Activity
 			{
 		        if(UserData.is_fav(ServerData.get_event_by_id(closure_saved_id)))
 		        {
+		        	UserData.mixpanel.track("EventInfoItemUnfavedEventID_" + closure_saved_id, null);
+		        	
 		        	// already a fav make not fav
 		        	UserData.remove_fav(ServerData.get_event_by_id(closure_saved_id));
 		        	UserData.write_changes(getBaseContext());
@@ -120,6 +127,8 @@ public class EventInfo extends Activity
 		        }
 		        else
 		        {
+		        	UserData.mixpanel.track("EventInfoItemFavedEventID_" + closure_saved_id, null);
+		        	
 		        	// not a fav make a fav
 		        	UserData.add_fav(ServerData.get_event_by_id(closure_saved_id));
 		        	UserData.write_changes(getBaseContext());
@@ -173,5 +182,13 @@ public class EventInfo extends Activity
     protected void onRestoreInstanceState(Bundle savedInstanceState) 
     {
     	((WebView)findViewById(R.id.webview_event_info)).restoreState(savedInstanceState);
+    }
+    
+    @Override
+    public void onBackPressed() {
+    	
+    	UserData.mixpanel.track("EventInfoBack", null);
+    	
+    	super.onBackPressed();
     }
 }

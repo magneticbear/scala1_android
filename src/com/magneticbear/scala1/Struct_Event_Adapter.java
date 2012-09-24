@@ -170,6 +170,8 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 					@Override
 					public void onClick(View v) 
 					{
+						UserData.mixpanel.track("EventListItemToEventID_" + event.eventid, null);
+						
 						// Go to event of index
 	        			Intent intent = new Intent(Parent.getContext(), EventInfo.class);
 	        			intent.putExtra("event", event.eventid);
@@ -186,12 +188,16 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 					{
 						if(UserData.is_fav(event))
 						{
+							UserData.mixpanel.track("EventListItemUnfavedEventID_" + event.eventid, null);
+							
 							UserData.remove_fav(event);
 							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.events_star_off);
 						}
 						else
 						{
+							UserData.mixpanel.track("EventListItemFavedEventID_" + event.eventid, null);
+							
 							UserData.add_fav(event);
 							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.events_star_on);

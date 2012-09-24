@@ -23,4 +23,12 @@ public class About extends Activity {
         getMenuInflater().inflate(R.menu.activity_about, menu);
         return true;
     }
+    
+    @Override
+    public void onBackPressed() {
+    	
+    	UserData.mixpanel.track("AboutBack", null);
+    	
+    	super.onBackPressed();
+    }
 }

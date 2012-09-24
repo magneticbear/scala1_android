@@ -135,6 +135,8 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 					@Override
 					public void onClick(View v) 
 					{
+						UserData.mixpanel.track("SpeakerListItemToSpeakerID_" + speaker.speakerid, null);
+						
 						// Go to event of index
 	        			Intent intent = new Intent(Parent.getContext(), SpeakersInfo.class);
 	        			intent.putExtra("speaker", speaker.speakerid);
@@ -151,12 +153,16 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 					{
 						if(UserData.is_fav(speaker))
 						{
+							UserData.mixpanel.track("SpeakerListItemUnfavedSpeakerID_" + speaker.speakerid, null);
+							
 							UserData.remove_fav(speaker);
 							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.speakers_avator_star_off);
 						}
 						else
 						{
+							UserData.mixpanel.track("SpeakerListItemFavedSpeakerID_" + speaker.speakerid, null);
+							
 							UserData.add_fav(speaker);
 							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.speakers_avator_star_on);
@@ -183,12 +189,16 @@ public class Struct_Speaker_Adapter extends ArrayAdapter<Struct_Speaker>
 					{
 						if(UserData.is_fav(speaker))
 						{
+							UserData.mixpanel.track("SpeakerListItemUnfavedSpeakerID_" + speaker.speakerid, null);
+							
 							UserData.remove_fav(speaker);
 							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.speakers_avator_star_off);
 						}
 						else
 						{
+							UserData.mixpanel.track("SpeakerListItemFavedSpeakerID_" + speaker.speakerid, null);
+							
 							UserData.add_fav(speaker);
 							UserData.write_changes(getContext());
 							star.setImageResource(R.drawable.speakers_avator_star_on);
