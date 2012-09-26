@@ -12,6 +12,7 @@ import android.webkit.SslErrorHandler;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.net.Uri;
 import android.net.http.SslError;
 
 public class SpeakersInfo extends Activity {
@@ -78,6 +79,11 @@ public class SpeakersInfo extends Activity {
         			Intent intent = new Intent(view.getContext(), EventInfo.class);
         			intent.putExtra("event", Integer.parseInt(index));
                     startActivityForResult(intent, 0);
+        		}
+        		else
+        		{
+        			Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( url ) );
+    			    startActivity( browse );
         		}
 				
 				return false;

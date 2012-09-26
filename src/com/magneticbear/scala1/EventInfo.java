@@ -1,5 +1,6 @@
 package com.magneticbear.scala1;
 
+import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.app.Activity;
@@ -79,6 +80,11 @@ public class EventInfo extends Activity
         			intent.putExtra("event", Integer.parseInt(index));
                     startActivity(intent);
         			//startActivityForResult(intent, 0);
+        		}
+        		else
+        		{
+        			Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse( url ) );
+    			    startActivity( browse );
         		}
 				
 				return false;
