@@ -19,7 +19,7 @@ public class UserData
 	public static void load_or_create(Context context)
 	{
 		// Get mixpanel api instance
-		mixpanel = MixpanelAPI.getInstance(context,"JRR TOKEN GOES HERE");
+		mixpanel = MixpanelAPI.getInstance(context,"cf8e0a4b9f683312c24432cee295a4fc");
 		
 		if(fav_events == null || fav_speakers == null)
 		{
