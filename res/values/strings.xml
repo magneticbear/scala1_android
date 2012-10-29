@@ -3,8 +3,8 @@
     <string name="app_name">Scala1</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_splash">Scala1</string>
-    <string name="title_activity_home">Scala1</string>
+    <string name="title_activity_splash">Typesafe</string>
+    <string name="title_activity_home">Typesafe</string>
     <string name="button_events_text">Events</string>
     <string name="button_speakers_text">Speakers</string>
     <string name="button_favourites_text">Favorites</string>
@@ -23,7 +23,7 @@
     <string name="events">Events</string>
     <string name="event_title">Event Title</string>
     <string name="about">About</string>
-    <string name="scala1">Scala1</string>
+    <string name="scala1">Typesafe</string>
     <string name="url_playground">https://scala1.tindr.co/playground</string>
     <string name="url_about">https://scala1.tindr.co/</string>
     <string name="url_events_feed">https://scala1.tindr.co/events</string>
