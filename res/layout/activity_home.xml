@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical|center_horizontal|center"
-        android:text="Typesafe"
+        android:text="TypesafeCon"
         android:textStyle="bold"
         android:textColor="#f2fafc" 
         android:textSize="@dimen/top_bar_font_size"
@@ -152,7 +152,7 @@
             android:background="@drawable/scala_button"
             android:drawableTop="@drawable/home_icon_about"
             android:paddingBottom="@dimen/scala_button_text_padding"
-            android:text="About Typesafe"
+            android:text="About TypesafeCon"
             android:textColor="@drawable/scala_button_text" />
 
         <ImageView
