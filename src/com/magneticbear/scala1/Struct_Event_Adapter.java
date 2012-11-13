@@ -1,5 +1,7 @@
 package com.magneticbear.scala1;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -161,7 +163,9 @@ public class Struct_Event_Adapter extends ArrayAdapter<Struct_Event>
 				}
 				if(subtitle != null)
 				{
-				      subtitle.setText(event.location);
+					  Format formatter = new SimpleDateFormat("MMM. d 'at' H:mm, ");
+					  String string_date = formatter.format(event.start_date);
+				      subtitle.setText(string_date + event.location);
 				}
 				
 				// Set the click link
